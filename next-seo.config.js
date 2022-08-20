@@ -1,10 +1,10 @@
-const description = `Learn how to build modern marketing websites, with localization and SEO, using Hygraph, NextJS, Chakra UI, and Vercel.`
-const title = `Build Modern Marketing Websites with a Headless CMS`
-const url = `https://marketing-websites.withheadlesscms.com`
+const description = `Pakistan Cargo Door to Door Cargo Service to Pakistan from Dubai and Abu Dhabi is best Cargo to Pakistan from Dubai service providers in UAE.`
+const title = `Pakistan Cargo- Door to Door Cargo to Pakistan from Dubai`
+const url = `https://www.pakistanlogistics.com/`
 
 const seo = {
   title,
-  titleTemplate: '%s | Pakistan Logistics',
+  titleTemplate: '%s | Pakistan Cargo Logistics',
   description,
   openGraph: {
     description,
