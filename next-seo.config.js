@@ -4,7 +4,7 @@ const url = `https://marketing-websites.withheadlesscms.com`
 
 const seo = {
   title,
-  titleTemplate: '%s | Hygraph',
+  titleTemplate: '%s | Pakistan Logistics',
   description,
   openGraph: {
     description,
