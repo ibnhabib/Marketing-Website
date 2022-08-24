@@ -16,6 +16,7 @@ npx degit Hygraph/reference-marketing-website#main reference-marketing-website
 cd reference-marketing-website
 yarn
 ```
+https://github.com/hygraph/reference-marketing-website
 
 2. **Provide your Hygraph project keys**
 
