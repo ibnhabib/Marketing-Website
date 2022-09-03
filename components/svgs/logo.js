@@ -1,8 +1,12 @@
 export default function Logo({ ...props }) {
   return (
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 273 75" style="enable-background:new 0 0 273 75;" xml:space="preserve">
-<style type="text/css">
+    <svg
+      viewBox="0 0 273 75"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <style type="text/css">
 	.st0{fill:#492ECD;}
 	.st1{font-family:'Ubuntu-Medium';}
 	.st2{font-size:16.2479px;}
@@ -28,7 +32,6 @@ export default function Logo({ ...props }) {
 		<text transform="matrix(1 0 0 1 91.5923 44.0181)" class="st0 st3 st4">Pakistan</text>
 	</g>
 </g>
-</svg>
-
+    </svg>
   )
 }
