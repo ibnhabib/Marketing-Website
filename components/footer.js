@@ -161,22 +161,22 @@ export default function Footer({ primaryLinks, secondaryLinks }) {
             <SocialMediaLink
               title="LinkedIn"
               icon={LinkedInIcon}
-              href="https://www.linkedin.com/company/pakistancargo"
+              href="https://linkedin.com/company/hygraph"
             />
             <SocialMediaLink
-              title="Facebook"
-              icon={FacebookIcon}
-              href="https://www.facebook.com/pakistancargouae"
+              title="Slack"
+              icon={SlackIcon}
+              href="https://slack.hygraph.com"
             />
             <SocialMediaLink
               title="Twitter"
               icon={TwitterIcon}
-              href="https://twitter.com/Pakistani_cargo"
+              href="https://twitter.com/Hygraphcom"
             />
             <SocialMediaLink
-              title="Instagram"
-              icon={InstagramIcon}
-              href="https://www.instagram.com/pakistanicargo"
+              title="GitHub"
+              icon={GithubIcon}
+              href="https://github.com/Hygraph/reference-nextjs-marketing"
             />
           </Stack>
 
@@ -186,7 +186,7 @@ export default function Footer({ primaryLinks, secondaryLinks }) {
             color="gray.400"
             order={{ md: 1 }}
           >
-            &copy; {new Date().getFullYear()} Pakistanlogistics.com All rights reserved.
+            &copy; {new Date().getFullYear()} GraphCMS GmbH All rights reserved.
           </Text>
         </Box>
       </Box>
