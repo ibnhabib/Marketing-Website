@@ -13,8 +13,8 @@ const seo = {
     url
   },
   twitter: {
-    handle: '@Hygraphcom',
-    site: '@Hygraphcom'
+    handle: '@Pakistani_cargo',
+    site: '@Pakistani_cargo'
   }
 }
 
