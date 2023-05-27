@@ -67,6 +67,7 @@ Add next-sitemap as your sitemap script in package.json
   "build": "next build",
   "sitemap": "next-sitemap",
 }
+```
 
 ## Run Build
 ```shell
