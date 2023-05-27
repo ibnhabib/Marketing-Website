@@ -38,6 +38,42 @@ NEXT_PUBLIC_GRAPHCMS_URL=
 yarn dev
 ```
 
+## next-sitemap
+You can add sitemap in backend  reference [Next-sitemap](https://www.npmjs.com/package/next-sitemap)
+
+1. **Installation**
+
+```shell
+yarn add next-sitemap
+```
+
+2.  **Create config file**
+next-sitemap requires a basic config file (next-sitemap.config.js) under your project root
+
+✅ next-sitemap will load environment variables from .env files by default.
+
+```shell
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: process.env.SITE_URL || 'https://example.com',
+  generateRobotsTxt: true, // (optional)
+  // ...other options
+}
+```
+3. **Building sitemaps**
+Add next-sitemap as your sitemap script in package.json
+```shell
+{
+  "build": "next build",
+  "sitemap": "next-sitemap",
+}
+
+## Run Build
+```shell
+Yarn Build
+```
+
+
 ## Next.js Preview Mode
 
 If you want to enable [Next.js Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) you'll need to add the following to your `.env`:
