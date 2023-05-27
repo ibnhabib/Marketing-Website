@@ -4,7 +4,7 @@ const url = `https://www.pakistanlogistics.com/`
 
 const seo = {
   title,
-  titleTemplate: '%s | PL',
+  titleTemplate: '%s | Pak Cargo',
   description,
   openGraph: {
     description,
