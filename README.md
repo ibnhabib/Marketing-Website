@@ -61,19 +61,24 @@ module.exports = {
 }
 ```
 3. **Building sitemaps**
-Add next-sitemap as your sitemap script in package.json
+Add next-sitemap as your sitemap script in package.json 
 ```shell
-{
-  "build": "next build",
-  "sitemap": "next-sitemap",
-}
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "sitemap": "next-sitemap",
+    "lint": "next lint"
+  },
 ```
 
 ## Run Build
 ```shell
 Yarn Build
 ```
-
+**Sitemap urls**
+`https://www.website.com/sitemap.xml`
+`https://www.website.com/sitemap-0.xml`
 
 ## Next.js Preview Mode
 
