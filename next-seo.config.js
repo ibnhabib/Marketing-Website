@@ -1,5 +1,5 @@
 const description = `Pakistan Cargo Door to Door Cargo Service to Pakistan from Dubai and Abu Dhabi is best Cargo to Pakistan from Dubai service providers in UAE.`
-const title = `Pakistan Cargo- Door to Door Cargo to Pakistan from Dubai`
+const title = `Pakistan Cargo Dubai`
 const url = `https://www.pakistanlogistics.com/`
 
 const seo = {
