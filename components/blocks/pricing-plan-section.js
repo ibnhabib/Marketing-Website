@@ -54,14 +54,14 @@ export default function PricingPlanSection({ page, ...grid }) {
             isActive={billingPeriod === 'monthly'}
             onClick={() => setBillingPeriod('monthly')}
           >
-            Rates
+            Monthly Billing
           </PricingButton>
-        {/*-- <PricingButton
+         <PricingButton
             isActive={billingPeriod === 'annual'}
             onClick={() => setBillingPeriod('annual')}
           >
             Annual billing
-          </PricingButton> */}
+          </PricingButton> 
         </Stack>
       </Box>
       <Grid {...grid}>

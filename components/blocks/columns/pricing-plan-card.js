@@ -40,7 +40,7 @@ export default function PricingPlanCard({
           >
             {new Intl.NumberFormat('en-US', {
               style: 'currency',
-              currency: 'AED',
+              currency: 'USD',
               minimumFractionDigits: 0
             }).format(billingPeriod === 'monthly' ? monthlyPrice : annualPrice)}
           </Text>
