@@ -40,12 +40,12 @@ export default function PricingPlanCard({
           >
             {new Intl.NumberFormat('en-US', {
               style: 'currency',
-              currency: 'USD',
+              currency: 'AED',
               minimumFractionDigits: 0
             }).format(billingPeriod === 'monthly' ? monthlyPrice : annualPrice)}
           </Text>
           <Text as="span" fontSize="md" fontWeight="medium" color="gray.500">
-            {billingPeriod === 'monthly' ? '/mo' : '/yr'}
+            {/*{billingPeriod === 'monthly' ? '/mo' : '/yr'}*/}
           </Text>
         </Text>
         <Link
@@ -65,7 +65,7 @@ export default function PricingPlanCard({
             bg: 'indigo.700'
           }}
         >
-          Buy {name}
+          Ship {name}
         </Link>
       </Box>
       <Box pt={6} pb={8} px={6}>
