@@ -29,10 +29,11 @@ export default function Banner({ content, href, theme = 'WARNING' }) {
             <Box borderRadius="md" boxShadow="sm">
               <Button
                 href={href}
-                label="Learn more"
+                label="Contact Us"
                 size="SMALL"
                 theme="WHITE"
               />
+                            
             </Box>
           </Box>
         </Flex>
