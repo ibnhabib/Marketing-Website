@@ -8,18 +8,12 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
-          />
-     
-       
+          <link rel="preconnect" href="https://us-west-2.graphassets.com" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
         </Head>
         <body>
-        
-     
           <Main />
           <NextScript />
         </body>

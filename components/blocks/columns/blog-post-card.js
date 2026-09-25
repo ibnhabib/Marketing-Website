@@ -22,8 +22,8 @@ export default function BlogPostCard({
           <Image
             className="blog-post-card-image"
             src={coverImage.url}
-            alt={coverImage.title}
-            title={coverImage.title}
+            alt={coverImage.title || title}
+            title={coverImage.title || title}
             width={coverImage.width}
             height={coverImage.height}
             objectFit="cover"
@@ -42,7 +42,7 @@ export default function BlogPostCard({
           <Text fontSize="sm" fontWeight="medium" color="indigo.600">
             {startCase(category.toLowerCase())}
           </Text>
-          <NextLink href={`/blog/${slug}`}>
+          <NextLink href={`/blog/${slug}`} passHref>
             <Link
               display="block"
               mt={2}

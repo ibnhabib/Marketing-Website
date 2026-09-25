@@ -8,5 +8,11 @@ module.exports = {
   images: {
     dangerouslyAllowSVG: true,
     domains: ['us-west-2.graphassets.com']
+  },
+  async redirects() {
+    return [
+      // "/home" duplicated the homepage; send it (and its link equity) to "/"
+      { source: '/home', destination: '/', permanent: true }
+    ]
   }
 }

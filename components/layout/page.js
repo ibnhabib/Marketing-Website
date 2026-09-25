@@ -6,6 +6,7 @@ import Hero from '@/components/hero'
 import * as Marketing from '@/marketing'
 import Navigation from '@/components/navigation'
 import SEO from '@/components/seo'
+import { BreadcrumbSchema, FaqSchema } from '@/components/structured-data'
 
 export default function PageLayout({ children, page }) {
   const pageBanner = page?.marketing?.find(
@@ -19,6 +20,18 @@ export default function PageLayout({ children, page }) {
   return (
     <>
       {page?.seo && <SEO {...page.seo} />}
+      <FaqSchema blocks={page?.blocks} />
+      {page?.slug && page.slug !== 'home' && (
+        <BreadcrumbSchema
+          items={[
+            { name: 'Home', path: '/' },
+            {
+              name: page.navigationLabel || page.title || page.slug,
+              path: `/${page.slug}`
+            }
+          ]}
+        />
+      )}
 
       {pageBanner && <Marketing.Banner {...pageBanner} />}
 

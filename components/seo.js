@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 
-import { defaultUrl } from '../next-seo.config'
+import { absoluteUrl } from '@/components/structured-data'
 
 export default function SEO({
   id,
@@ -11,10 +11,12 @@ export default function SEO({
   ...props
 }) {
   const router = useRouter()
+  const canonical = absoluteUrl(router.asPath)
 
   const SEO = {
     ...(keywords && { keywords: keywords.toString() }),
     noindex,
+    canonical,
     openGraph: {
       ...(image && {
         images: [
@@ -24,7 +26,7 @@ export default function SEO({
           }
         ]
       }),
-      url: defaultUrl + router.asPath,
+      url: canonical,
       ...props
     },
     ...props

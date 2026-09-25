@@ -17,11 +17,36 @@ import { getContentLayout } from '@/layout'
 import { hygraphClient } from '@/lib/_client'
 import { parsePostData } from '@/utils/_parsePostData'
 import SEO from '@/components/seo'
+import {
+  BlogPostingSchema,
+  BreadcrumbSchema
+} from '@/components/structured-data'
 
 export default function BlogPost({ nextPost, post, previousPost }) {
   return (
     <>
-      <SEO {...post.seo} />
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        {...(post.coverImage?.url && {
+          image: {
+            url: post.coverImage.url,
+            width: post.coverImage.width,
+            height: post.coverImage.height
+          }
+        })}
+        {...Object.fromEntries(
+          Object.entries(post.seo || {}).filter(([, value]) => value != null)
+        )}
+      />
+      <BlogPostingSchema post={post} path={`/blog/${post.slug}`} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: post.title, path: `/blog/${post.slug}` }
+        ]}
+      />
       <Box
         as="article"
         pos="relative"
@@ -119,8 +144,8 @@ export default function BlogPost({ nextPost, post, previousPost }) {
                 <Image
                   className="cover-image"
                   src={post.coverImage.url}
-                  alt={post.coverImage.title}
-                  title={post.coverImage.title}
+                  alt={post.coverImage.title || post.title}
+                  title={post.coverImage.title || post.title}
                   height={post.coverImage.height}
                   width={post.coverImage.width}
                   objectFit="cover"
@@ -200,7 +225,7 @@ export default function BlogPost({ nextPost, post, previousPost }) {
               </Stack>
             )}
             <Box pt={8}>
-              <NextLink href="/blog">
+              <NextLink href="/blog" passHref>
                 <Link
                   color="indigo.500"
                   _hover={{

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Flex, Box } from '@chakra-ui/layout'
 
 import Footer from '@/components/footer'
+import ContactBar from '@/components/contact-bar'
 
 function PreviewBanner({ enabled = false }) {
   if (!enabled) return null
@@ -22,6 +23,7 @@ export default function SiteLayout({ children, page, preview = false }) {
       <PreviewBanner enabled={preview} />
       <Box flexGrow="1">{children}</Box>
       {page?.footer && <Footer {...page.footer} />}
+      <ContactBar />
     </Flex>
   )
 }

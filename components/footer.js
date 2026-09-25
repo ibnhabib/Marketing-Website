@@ -5,15 +5,14 @@ import {
   Stack,
   Box,
   Grid,
-  Heading,
-  FormLabel,
-  Select
+  Heading
 } from '@chakra-ui/react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
-import { GithubIcon, LinkedInIcon, SlackIcon, TwitterIcon } from '@/icons'
-import { locales } from '@/lib/_locales'
+import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from '@/icons'
+import { site, trackLead, whatsappUrl } from '@/lib/_site'
+
+const formatPhone = (phone) => phone.replace(/^\+971(\d{2})(\d{7})$/, '0$1-$2')
 
 function GridColumnHeading({ children }) {
   return (
@@ -38,7 +37,7 @@ function GridColumn({ links, title }) {
       <Stack as="ul" mt={4} spacing={4}>
         {links.map((link) => (
           <li key={link.id}>
-            <Link href={`/${link.slug}`} passHref>
+            <Link href={link.slug === 'home' ? '/' : `/${link.slug}`} passHref>
               <ChakraLink
                 color="gray.300"
                 _hover={{
@@ -73,14 +72,6 @@ function SocialMediaLink({ href, title, icon }) {
 }
 
 export default function Footer({ primaryLinks, secondaryLinks }) {
-  const router = useRouter()
-
-  const activeLocale = locales.find((locale) => locale.value === router.locale)
-
-  const setLocale = (event) => {
-    router.push(router.asPath, router.asPath, { locale: event.target.value })
-  }
-
   return (
     <Box as="footer" bg="gray.800" aria-labelledby="footerHeading">
       <VisuallyHidden as="h2" id="footerHeading">
@@ -91,60 +82,66 @@ export default function Footer({ primaryLinks, secondaryLinks }) {
         <Box
           pb={8}
           display={{ xl: 'grid' }}
-          gridTemplateColumns={{ xl: 'repeat(5, 1fr)' }}
+          gridTemplateColumns={{ xl: 'repeat(3, 1fr)' }}
           gridGap={{ xl: 8 }}
         >
           <Grid
             gridTemplateColumns="repeat(2, 1fr)"
             gridGap={8}
-            gridColumn={{ xl: 'span 4 / span 4' }}
+            gridColumn={{ xl: 'span 2 / span 2' }}
           >
             <GridColumn
               links={primaryLinks.length && primaryLinks}
-              title="Primary"
+              title="Company"
             />
 
             <GridColumn
               links={secondaryLinks.length && secondaryLinks}
-              title="Secondary"
+              title="Cargo Services"
             />
           </Grid>
 
           <Box mt={{ base: 12, xl: 0 }}>
-            <GridColumnHeading>Language</GridColumnHeading>
+            <GridColumnHeading>Contact Us</GridColumnHeading>
 
-            <Box as="form" mt={4} maxW={{ sm: 'xs' }}>
-              <Box as="fieldset" w="full">
-                <VisuallyHidden as={FormLabel} htmlFor="language">
-                  Language
-                </VisuallyHidden>
-
-                <Box position="relative">
-                  <Select
-                    id="language"
-                    name="language"
-                    color="white"
-                    bg="gray.700"
-                    borderColor="transparent"
-                    fontSize={{ sm: 'sm' }}
-                    value={activeLocale.value}
-                    onChange={setLocale}
-                  >
-                    {locales.map((locale) => (
-                      <Box
-                        as="option"
-                        bg="#374151!important"
-                        color="white"
-                        key={locale.value}
-                        value={locale.value}
-                      >
-                        {locale.label}
-                      </Box>
-                    ))}
-                  </Select>
-                </Box>
-              </Box>
-            </Box>
+            <Stack
+              as="address"
+              mt={4}
+              spacing={3}
+              fontStyle="normal"
+              color="gray.300"
+            >
+              {site.locations.map((location) => (
+                <Text key={location.name}>
+                  {location.streetAddress}, {location.addressLocality}, UAE
+                </Text>
+              ))}
+              {site.phones.slice(0, 2).map((phone) => (
+                <ChakraLink
+                  key={phone}
+                  href={`tel:${phone}`}
+                  onClick={() => trackLead('call', 'footer')}
+                  _hover={{ color: 'white' }}
+                >
+                  {formatPhone(phone)}
+                </ChakraLink>
+              ))}
+              <ChakraLink
+                href={whatsappUrl()}
+                isExternal
+                onClick={() => trackLead('whatsapp', 'footer')}
+                _hover={{ color: 'white' }}
+              >
+                WhatsApp: {formatPhone(site.phone)}
+              </ChakraLink>
+              <ChakraLink
+                href={`mailto:${site.email}`}
+                onClick={() => trackLead('email', 'footer')}
+                _hover={{ color: 'white' }}
+              >
+                {site.email}
+              </ChakraLink>
+            </Stack>
           </Box>
         </Box>
 
@@ -159,24 +156,24 @@ export default function Footer({ primaryLinks, secondaryLinks }) {
         >
           <Stack direction="row" display="flex" spacing={6} order={{ md: 2 }}>
             <SocialMediaLink
-              title="LinkedIn"
-              icon={LinkedInIcon}
-              href="https://www.linkedin.com/company/pakistancargo"
+              title="Facebook"
+              icon={FacebookIcon}
+              href={site.social.facebook}
             />
             <SocialMediaLink
-              title="Slack"
-              icon={SlackIcon}
-              href="https://www.facebook.com/pakistancargouae"
+              title="Instagram"
+              icon={InstagramIcon}
+              href={site.social.instagram}
+            />
+            <SocialMediaLink
+              title="LinkedIn"
+              icon={LinkedInIcon}
+              href={site.social.linkedin}
             />
             <SocialMediaLink
               title="Twitter"
               icon={TwitterIcon}
-              href="https://twitter.com/Pakistani_cargo"
-            />
-            <SocialMediaLink
-              title="Instagram"
-              icon={GithubIcon}
-              href="https://www.instagram.com/pakistanicargo"
+              href={site.social.twitter}
             />
           </Stack>
 
@@ -186,7 +183,7 @@ export default function Footer({ primaryLinks, secondaryLinks }) {
             color="gray.400"
             order={{ md: 1 }}
           >
-            &copy; {new Date().getFullYear()} Pakistan Logistics All rights reserved.
+            &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </Text>
         </Box>
       </Box>

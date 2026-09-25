@@ -15,6 +15,7 @@ import { Transition } from 'react-transition-group'
 
 import { LogoSVG, MarkSVG } from '@/svgs'
 import { MenuIcon, XIcon } from '@/icons'
+import { site } from '@/lib/_site'
 
 const defaultStyle = {
   transition: `all 150ms cubic-bezier(0.4, 0, 1, 1)`
@@ -95,7 +96,7 @@ export default function Navigation({ pages }) {
                 <div>
                   <Link href="/">
                     <a>
-                      <VisuallyHidden>Hygraph</VisuallyHidden>
+                      <VisuallyHidden>{site.name}</VisuallyHidden>
                       <Box as={MarkSVG} h={8} w="auto" color="indigo.600" />
                     </a>
                   </Link>
@@ -173,7 +174,7 @@ export default function Navigation({ pages }) {
           <Flex w={{ lg: 0 }} flex={{ lg: '1 1 0' }}>
             <Link href="/">
               <a>
-                <VisuallyHidden>Hygraph</VisuallyHidden>
+                <VisuallyHidden>{site.name}</VisuallyHidden>
                 <Box as={LogoSVG} h={10} color="indigo.600" w="auto" />
               </a>
             </Link>

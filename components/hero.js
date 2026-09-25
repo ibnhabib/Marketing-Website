@@ -76,8 +76,8 @@ export default function Hero({ buttons, image, navigation, page }) {
           <Image
             className="hero-image"
             src={image.url}
-            alt={image.title}
-            title={image.title}
+            alt={image.title || page.title}
+            title={image.title || page.title}
             layout="fill"
             priority={true}
             objectFit="cover"
