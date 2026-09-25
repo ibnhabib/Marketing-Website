@@ -85,6 +85,8 @@ export default function BlogPostCard({
                     alt={author.name}
                     title={author.name}
                     layout="fill"
+                    objectFit="cover"
+                    sizes="36px"
                   />
                 </Box>
               )

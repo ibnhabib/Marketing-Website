@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   const [rootSlug, nestedSlug] = req.query.slug.split('/')
 
   const data = await client.request(nestedSlug ? blogPostQuery : pageQuery, {
-    slug: nestedSlug ? blogPostQuery : rootSlug,
+    slug: nestedSlug ? nestedSlug : rootSlug,
     ...(rootSlug && { locale: 'en' })
   })
 

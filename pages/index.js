@@ -16,6 +16,12 @@ export async function getStaticProps({ locale, preview = false }) {
     slug: 'home'
   })
 
+  if (!page) {
+    return {
+      notFound: true
+    }
+  }
+
   const parsedPageData = await parsePageData(page)
 
   return {

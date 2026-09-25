@@ -29,6 +29,9 @@ export default function Testimonial({ content, person }) {
               src={person.company.logo.url}
               alt={person.company.logo.title}
               layout="fill"
+              objectFit="contain"
+              objectPosition="left"
+              sizes="200px"
             />
           </Box>
           <Box as="blockquote" mt={10}>
@@ -56,6 +59,8 @@ export default function Testimonial({ content, person }) {
                       alt={`${person.name} photo`}
                       src={person.photo.url}
                       layout="fill"
+                      objectFit="cover"
+                      sizes="40px"
                     />
                   </Box>
                 </Box>

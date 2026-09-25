@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Box,
   Heading,
@@ -9,6 +10,29 @@ import {
 } from '@chakra-ui/react'
 
 export default function NewsletterSignup({ ctaLabel, subtitle, title }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    setStatus('loading')
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+
+      if (!response.ok) throw new Error('Subscribe request failed')
+
+      setStatus('success')
+      setEmail('')
+    } catch (error) {
+      setStatus('error')
+    }
+  }
+
   return (
     <Box bg="white">
       <Box maxW="7xl" mx="auto" py={{ base: 12, lg: 16 }} px={[4, 6, null, 8]}>
@@ -33,7 +57,7 @@ export default function NewsletterSignup({ ctaLabel, subtitle, title }) {
         >
           {subtitle}
         </Text>
-        <Box as="form" mt={8} display={{ sm: 'flex' }}>
+        <Box as="form" onSubmit={handleSubmit} mt={8} display={{ sm: 'flex' }}>
           <VisuallyHidden as={FormLabel} htmlFor="emailAddress">
             Email address
           </VisuallyHidden>
@@ -44,6 +68,8 @@ export default function NewsletterSignup({ ctaLabel, subtitle, title }) {
             autoComplete="email"
             required
             placeholder="Enter your email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             width="full"
             height="full"
             maxW={{ sm: 'xs' }}
@@ -63,6 +89,7 @@ export default function NewsletterSignup({ ctaLabel, subtitle, title }) {
           >
             <Button
               type="submit"
+              isLoading={status === 'loading'}
               width="full"
               height="full"
               px={5}
@@ -77,6 +104,16 @@ export default function NewsletterSignup({ ctaLabel, subtitle, title }) {
             </Button>
           </Box>
         </Box>
+        {status === 'success' && (
+          <Text mt={3} color="green.600" role="status">
+            Thanks for subscribing!
+          </Text>
+        )}
+        {status === 'error' && (
+          <Text mt={3} color="red.600" role="alert">
+            Something went wrong. Please try again.
+          </Text>
+        )}
       </Box>
     </Box>
   )

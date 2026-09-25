@@ -26,8 +26,7 @@ export default function SEO({
           }
         ]
       }),
-      url: canonical,
-      ...props
+      url: canonical
     },
     ...props
   }

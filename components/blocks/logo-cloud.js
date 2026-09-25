@@ -32,6 +32,7 @@ export default function LogoCloud({ companies, logoCloudTitle }) {
                     height={company.logo.height}
                     width={company.logo.width}
                     layout="responsive"
+                    sizes="176px"
                     alt={company.logo.title || `${company.name} logo`}
                   />
                 </Box>

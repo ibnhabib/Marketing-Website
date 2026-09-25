@@ -7,6 +7,9 @@ module.exports = {
   },
   images: {
     dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    formats: ['image/avif', 'image/webp'],
     domains: ['us-west-2.graphassets.com']
   },
   async redirects() {
