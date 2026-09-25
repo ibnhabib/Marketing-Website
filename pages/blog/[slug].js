@@ -144,7 +144,7 @@ export default function BlogPost({ nextPost, post, previousPost }) {
                 <Image
                   className="cover-image"
                   src={post.coverImage.url}
-                  alt={post.coverImage.title || post.title}
+                  alt={post.coverImage.altText || post.coverImage.title || post.title}
                   title={post.coverImage.title || post.title}
                   height={post.coverImage.height}
                   width={post.coverImage.width}

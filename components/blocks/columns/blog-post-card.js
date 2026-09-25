@@ -22,7 +22,7 @@ export default function BlogPostCard({
           <Image
             className="blog-post-card-image"
             src={coverImage.url}
-            alt={coverImage.title || title}
+            alt={coverImage.altText || coverImage.title || title}
             title={coverImage.title || title}
             width={coverImage.width}
             height={coverImage.height}

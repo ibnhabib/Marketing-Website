@@ -73,15 +73,26 @@ export default function Hero({ buttons, image, navigation, page }) {
           bottom={{ lg: 0 }}
           right={{ lg: 0 }}
         >
-          <Image
-            className="hero-image"
-            src={image.url}
-            alt={image.title || page.title}
-            title={image.title || page.title}
-            layout="fill"
-            priority={true}
-            objectFit="cover"
-          />
+          {/* On desktop the column spans the full (often long) text, so pin
+              the photo at screen height instead of stretching it */}
+          <Box
+            pos={{ base: 'relative', lg: 'sticky' }}
+            top={0}
+            w="full"
+            h={{ base: 'full', lg: '100vh' }}
+            maxH={{ lg: '900px' }}
+          >
+            <Image
+              className="hero-image"
+              src={image.url}
+              alt={image.altText || image.title || page.title}
+              title={image.altText || image.title || page.title}
+              layout="fill"
+              priority={true}
+              objectFit="cover"
+              sizes="(min-width: 62em) 50vw, 100vw"
+            />
+          </Box>
         </Box>
       </Box>
     </Box>
