@@ -32,7 +32,7 @@ export default function LogoCloud({ companies, logoCloudTitle }) {
                     height={company.logo.height}
                     width={company.logo.width}
                     layout="responsive"
-                    alt={company.logo.title}
+                    alt={company.logo.title || `${company.name} logo`}
                   />
                 </Box>
               </Flex>
