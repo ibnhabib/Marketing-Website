@@ -42,7 +42,6 @@ export function OrganizationSchema() {
         '@type': ['Organization', 'MovingCompany'],
         '@id': orgId,
         name: site.name,
-        alternateName: site.alternateName,
         url: `${site.url}/`,
         logo: site.logo,
         image: site.logo,
