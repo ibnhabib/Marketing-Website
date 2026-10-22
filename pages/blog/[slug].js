@@ -22,6 +22,18 @@ import {
   BreadcrumbSchema
 } from '@/components/structured-data'
 
+// Post bodies are written with "#" headings; the page already has an H1.
+const mdxComponents = { h1: (props) => <h2 {...props} /> }
+
+const serviceLinks = [
+  { href: '/cargo-to-pakistan', label: 'Cargo to Pakistan from the UAE' },
+  { href: '/pakistan-cargo-rates', label: 'Pakistan cargo rates per kg' },
+  { href: '/pakistan-cargo-door-to-door', label: 'Door to door cargo to Pakistan' },
+  { href: '/free-pickup', label: 'Free cargo pickup in Dubai and Abu Dhabi' },
+  { href: '/cargo-to-karachi', label: 'Cargo to Karachi' },
+  { href: '/cargo-to-lahore', label: 'Cargo to Lahore' }
+]
+
 export default function BlogPost({ nextPost, post, previousPost }) {
   return (
     <>
@@ -153,7 +165,19 @@ export default function BlogPost({ nextPost, post, previousPost }) {
               </Box>
             )}
             <Box maxW="none" pt={10} pb={8} color="gray.500" className="prose">
-              <MDXRemote {...post.content.mdx} />
+              <MDXRemote {...post.content.mdx} components={mdxComponents} />
+            </Box>
+            <Box as="section" pb={8} className="prose">
+              <h2>Our cargo services</h2>
+              <ul>
+                {serviceLinks.map((link) => (
+                  <li key={link.href}>
+                    <NextLink href={link.href}>
+                      <a>{link.label}</a>
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
             </Box>
           </Box>
           <Box
@@ -175,7 +199,7 @@ export default function BlogPost({ nextPost, post, previousPost }) {
                 {nextPost && (
                   <div>
                     <Heading
-                      as="h2"
+                      as="p"
                       fontSize="xs"
                       fontWeight="medium"
                       letterSpacing="wide"
@@ -200,7 +224,7 @@ export default function BlogPost({ nextPost, post, previousPost }) {
                 {previousPost && (
                   <div>
                     <Heading
-                      as="h2"
+                      as="p"
                       fontSize="xs"
                       fontWeight="medium"
                       letterSpacing="wide"

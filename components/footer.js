@@ -73,11 +73,7 @@ function SocialMediaLink({ href, title, icon }) {
 
 export default function Footer({ primaryLinks, secondaryLinks }) {
   return (
-    <Box as="footer" bg="gray.800" aria-labelledby="footerHeading">
-      <VisuallyHidden as="h2" id="footerHeading">
-        Footer
-      </VisuallyHidden>
-
+    <Box as="footer" bg="gray.800" aria-label="Site footer">
       <Box maxW="7xl" mx="auto" py={{ base: 12, lg: 16 }} px={[4, 6, null, 8]}>
         <Box
           pb={8}

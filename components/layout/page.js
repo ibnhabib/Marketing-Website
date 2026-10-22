@@ -6,7 +6,13 @@ import Hero from '@/components/hero'
 import * as Marketing from '@/marketing'
 import Navigation from '@/components/navigation'
 import SEO from '@/components/seo'
-import { BreadcrumbSchema, FaqSchema } from '@/components/structured-data'
+import {
+  BreadcrumbSchema,
+  FaqSchema,
+  ServiceSchema
+} from '@/components/structured-data'
+
+const NON_SERVICE_SLUGS = ['home', 'about', 'contact', 'blog']
 
 export default function PageLayout({ children, page }) {
   const pageBanner = page?.marketing?.find(
@@ -21,6 +27,13 @@ export default function PageLayout({ children, page }) {
     <>
       {page?.seo && <SEO {...page.seo} />}
       <FaqSchema blocks={page?.blocks} />
+      {page?.slug && !NON_SERVICE_SLUGS.includes(page.slug) && (
+        <ServiceSchema
+          name={page.title}
+          description={page.seo?.description}
+          path={`/${page.slug}`}
+        />
+      )}
       {page?.slug && page.slug !== 'home' && (
         <BreadcrumbSchema
           items={[

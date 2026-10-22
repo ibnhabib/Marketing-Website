@@ -125,6 +125,23 @@ export function FaqSchema({ blocks }) {
   return <JsonLd id="faq" data={data} />
 }
 
+export function ServiceSchema({ name, description, path }) {
+  if (!name) return null
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    ...(description && { description }),
+    serviceType: 'Cargo shipping',
+    url: absoluteUrl(path),
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: site.areaServed
+  }
+
+  return <JsonLd id="service" data={data} />
+}
+
 export function BlogPostingSchema({ post, path }) {
   if (!post) return null
 
