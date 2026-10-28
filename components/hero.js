@@ -82,16 +82,18 @@ export default function Hero({ buttons, image, navigation, page }) {
             h={{ base: 'full', lg: '100vh' }}
             maxH={{ lg: '900px' }}
           >
-            <Image
-              className="hero-image"
-              src={image.url}
-              alt={image.altText || image.title || page.title}
-              title={image.altText || image.title || page.title}
-              layout="fill"
-              priority={true}
-              objectFit="cover"
-              sizes="(min-width: 62em) 50vw, 100vw"
-            />
+            {image?.url && (
+              <Image
+                className="hero-image"
+                src={image.url}
+                alt={image.altText || image.title || page.title}
+                title={image.altText || image.title || page.title}
+                layout="fill"
+                priority={true}
+                objectFit="cover"
+                sizes="(min-width: 62em) 50vw, 100vw"
+              />
+            )}
           </Box>
         </Box>
       </Box>
